@@ -1,0 +1,187 @@
+{{define "richText" }}
+    <span class="
+    {{ if .Annotations.Bold}}bold{{end}}
+    {{ if .Annotations.Italic}}italic{{end}}
+    {{ if .Annotations.Strikethrough}}strikeThrough{{end}}
+    {{ if .Annotations.Underline}}underline{{end}}
+    {{ if .Annotations.Code}}code{{end}}
+    color-{{.Annotations.Color}}
+">{{if eq .Type "text"}}
+            {{.Text.Content}}
+        {{else if eq .Type "mention"}}
+            {{.PlainText}}
+        {{else if eq .Type "equation"}}
+            {{.PlainText }}
+        {{end}}</span>
+{{end}}
+{{define "richTextArray" }}
+    {{range .}}
+        {{template "richText" . }}
+
+    {{end}}
+{{end}}
+
+{{define "rawRichTextArray" }}{{range .}}{{if eq .Type "text"}}{{.Text.Content}}{{else if eq .Type "mention"}}{{.PlainText}}{{else if eq .Type "equation"}}{{.PlainText }}{{end}}{{end}}{{end}}
+
+{{define "children"}}
+    {{ if .HasChildren }}
+        {{ range .Children }}
+                {{template "section" . }}
+        {{end}}
+    {{end}}
+{{end}}
+
+{{define "section"}}
+
+    {{if eq .Type "column_list"}}
+        <div class="flex">
+            {{ template "children" .}}
+        </div>
+    {{ else }}
+        {{ if eq .Type "paragraph" }}
+            <p class="mb-2">
+                {{ template "richTextArray" .Block.Paragraph.RichText }}
+            </p>
+        {{else if eq .Type "table_row" }}
+            <tr>
+                {{ range .Block.TableRow.Cells }}
+                    <td>
+                        {{ template "richTextArray" . }}
+                    </td>
+                {{end}}
+            </tr>
+        {{else if eq .Type "table" }}
+            <table class="
+            {{if .Block.Table.HasColumnHeader}}hasColumnHeader{{end}}
+            {{if .Block.Table.HasRowHeader}}hasRowHeader{{end}}
+">
+                {{ template "children" .}}
+
+            </table>
+        {{else if eq .Type "code" }}
+            <pre><code>{{ template "rawRichTextArray" .Block.Code.RichText }}</code></pre>
+        {{else if eq .Type "column" }}
+            <div class="w-1/2">
+                {{ template "children" .}}
+            </div>
+        {{else if eq .Type "bulleted_list_item" }}
+            <ul>
+                <li>
+                    {{ template "richTextArray" .Block.BulletedListItem.RichText }}
+                    {{ template "children" .}}
+                </li>
+            </ul>
+        {{else if eq .Type "divider" }}
+            <hr/>
+        {{else if eq .Type "callout" }}
+            <div style="border: 1px solid black">
+                {{ template "richTextArray" .Block.Callout.RichText }}
+
+                {{ template "children" .}}
+
+            </div>
+        {{else if eq .Type "heading_1" }}
+            <h1>
+                {{ template "richTextArray" .Block.Heading1.RichText }}
+            </h1>
+        {{else if eq .Type "heading_2" }}
+            <h2>
+                {{ template "richTextArray" .Block.Heading2.RichText }}
+            </h2>
+        {{else if eq .Type "heading_3" }}
+            <h3>
+                {{ template "richTextArray" .Block.Heading3.RichText }}
+            </h3>
+        {{else if eq .Type "image" }}
+            <img src="{{.Block.Image.File.URL }}" style="display: block; width: 100%;"/>
+            <p>{{template "richTextArray" .Block.Image.Caption}}</p>
+        {{else }}
+            {{ .Block }}
+
+        {{end}}
+    {{end}}
+{{end}}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css"
+          integrity="sha512-Mjxkx+r7O/OLQeKeIBCQ2yspG1P5muhAtv/J+p2/aPnSenciZWm5Wlnt+NOUNA4SHbnBIE/R2ic0ZBiCXdQNUg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css"
+          integrity="sha512-ITH3NSfntO7uI5n+BnxGNXpzDUoOsmAXuG37UDONLxNYIdc0EBBOOQ1xyc+t9ag9ETSuBXFApx+Rod0uURfDYw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/monokai.min.css"
+          integrity="sha512-z8wQkuDRFwCBfoj7KOiu1MECaRVoXx6rZQWL21x0BsVVH7JkqCp1Otf39qve6CrCycOOL5o9vgfII5Smds23rg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+    <style type="text/tailwindcss">
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        table.hasRowHeader tr:first-of-type,
+        table.hasColumnHeader tr > td:first-of-type {
+            background-color: #AAA;
+            font-weight: bold;
+        }
+
+
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .strikeThrough {
+            text-decoration: overline;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section>
+            {{ range .file }}
+
+            {{if eq .Type "divider"}}
+        </section>
+        <section>
+
+            {{ else }}
+                {{template "section" . }}
+
+            {{end}}
+            {{end}}
+        </section>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"
+        integrity="sha512-fEgazVdZLNymIm9n+b2jtCrM4DQiqNTfLNUxbsGSFUJpYemf9A8GxgJ3VAfU/Lc6yZkDdEOdekBDZtG/mf73fQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"
+        integrity="sha512-U3fPDUX5bMrn1wnYqjaK44MFA9E6MKS+zPAg9WPAGF5XhReBeDj3FGaA831CjueG+YJxYA3WaO/m33kMIoOs/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    Reveal.initialize({plugins: [RevealHighlight]});
+</script>
+
+</body>
+</html>

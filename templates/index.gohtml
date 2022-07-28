@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Diapos</h1>
+<ul>
+    {{ range $key, $value := .files }}
+    <li>
+        {{$key}}
+        <ul>
+            {{ range $key2, $value2 := $value }}
+            <li>
+                {{$key2}}
+                <ul>
+                    {{ range $docId, $docName:=$value2}}
+                    <li> <a href="/slides/{{ $docId }}">{{ $docName }}</a></li>
+                    {{end}}
+                </ul>
+            </li>
+            {{end}}
+        </ul>
+
+    </li>
+    {{end}}
+
+</ul>
+
+
+</body>
+</html>

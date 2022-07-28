@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+td {
+  @apply border border-slate-400;
+}
+
+table.row-header tr td:first-of-type,
+table.col-header tr:first-of-type td {
+  @apply bg-slate-300 font-bold;
+}
+
+.toggler {
+  @apply bg-slate-300 text-left p-2;
+  @apply rounded m-4;
+
+}
+
+
+.color-default {
+  @apply text-slate-800;
+}
+
+.color-gray {
+  @apply text-gray-300;
+}
+
+.color-brown {
+  @apply text-amber-900	;
+}
+
+.color-orange {
+  @apply text-orange-300;
+}
+
+.color-yellow {
+  @apply text-amber-300;
+}
+
+.color-green {
+  @apply text-emerald-300;
+}
+
+.color-blue {
+  @apply text-blue-300;
+}
+
+.color-purple {
+  @apply text-purple-300;
+}
+
+.color-pink {
+  @apply text-pink-300;
+}
+
+.color-red {
+  @apply text-red-300;
+}
+
+.color-gray_background {@apply bg-gray-300;}
+.color-gray_background * {@apply text-gray-600;}
+.color-gray_background {@apply text-gray-600;}
+
+.color-brown_background {@apply bg-amber-900	;}
+.color-brown_background * {@apply text-amber-700	;}
+.color-brown_background {@apply text-amber-700	;}
+
+.color-orange_background {@apply bg-orange-300;}
+.color-orange_background * {@apply text-orange-600;}
+.color-orange_background {@apply text-orange-600;}
+
+.color-yellow_background {@apply bg-amber-300;}
+.color-yellow_background * {@apply text-amber-600;}
+.color-yellow_background {@apply text-amber-600;}
+
+.color-green_background {@apply bg-emerald-300;}
+.color-green_background * {@apply text-emerald-600;}
+.color-green_background {@apply text-emerald-600;}
+
+.color-blue_background {@apply bg-blue-300;}
+.color-blue_background * {@apply text-blue-600;}
+.color-blue_background {@apply text-blue-600;}
+
+.color-purple_background {@apply bg-purple-300;}
+.color-purple_background * {@apply text-purple-600;}
+.color-purple_background {@apply text-purple-600;}
+
+.color-pink_background {@apply bg-pink-300;}
+.color-pink_background * {@apply text-pink-600;}
+.color-pink_background {@apply text-pink-600;}
+
+.color-red_background {@apply bg-red-300;}
+.color-red_background * {@apply text-red-600;}
+.color-red_background {@apply text-red-600;}
