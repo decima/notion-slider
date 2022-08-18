@@ -1,3 +1,3 @@
 <script>export let item;</script>
-<hr/>
+<div class="divider"></div>
 <slot/>

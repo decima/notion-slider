@@ -5,33 +5,29 @@
     let data = null;
     onMount(async () => {
         data = await listFiles()
+        console.log(data)
     })
 </script>
-<div class="h-full pt-20 border-box bg-lime-300">
-    <div class="w-2/3 mx-auto bg-white p-4 rounded ">
-        {#if data }
-            <ul>
+<div class="overflow-x-auto w-1/2 mx-auto">
+    <table class="table w-full">
 
-                {#each Object.entries(data).sort((a, b) => a[1].name.localeCompare(b[1].name)) as [slideId, slide]}
-                    <li>
-                        {slide.name}
-                        <a href="/slides/{slideId}" target="_blank">
-                            <i class="fa-solid fa-presentation"></i>
-                        </a>
-                        <a href="{slide.url}" target="_blank"><i class="fa-solid fa-file-lines"></i></a>
+        <tbody>
+        {#if data}
+        {#each Object.entries(data).sort((a, b) => a[1].name.localeCompare(b[1].name)) as [slideId, slide]}
+            <tr>
+                <th>{slide.name}</th>
+                <td><a href="/presentation/{slideId}" target="_blank">
+                    <i class="fa-solid fa-presentation"></i>
+                </a>
+                </td>
+                <td>
+                    <a href="{slide.url}" target="_blank"><i class="fa-solid fa-file-lines"></i></a>
+                </td>
+            </tr>
 
+        {/each}
+            {/if}
 
-                    </li>
-                {/each}
-            </ul>
-        {:else}
-            Loading...
-        {/if}
-    </div>
+        </tbody>
+    </table>
 </div>
-
-<style>
-    ul {
-        @apply pl-4;
-    }
-</style>

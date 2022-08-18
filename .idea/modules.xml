@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/notionSlider.iml" filepath="$PROJECT_DIR$/.idea/notionSlider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../notionapi/.idea/notionapi.iml" filepath="$PROJECT_DIR$/../notionapi/.idea/notionapi.iml" />
     </modules>
   </component>
 </project>

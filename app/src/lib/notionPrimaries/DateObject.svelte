@@ -6,6 +6,7 @@
 {#if dateObject}
     <DateText date={dateObject.start}></DateText>
     {#if dateObject.end}
+        <br/>
         ➡
         <DateText date={dateObject.end}></DateText>
     {/if}

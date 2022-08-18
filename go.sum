@@ -2,8 +2,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/decima/notionapi v1.8.9 h1:J9KjME9/myBITngpaiAbZ5FNPnAWvSC+nIN1bG3HoaI=
-github.com/decima/notionapi v1.8.9/go.mod h1:XvxOdrxAl0UjqnkjlDxHBNyyWNk8RbyIWLvmc3FL/iI=
+github.com/decima/notionapi v1.8.10 h1:rWUqcRWSDJ7LMu3jVvwVvaUkSr56S5NR50h0o1h6OHA=
+github.com/decima/notionapi v1.8.10/go.mod h1:XvxOdrxAl0UjqnkjlDxHBNyyWNk8RbyIWLvmc3FL/iI=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-contrib/static v0.0.1 h1:JVxuvHPuUfkoul12N7dtQw7KRn/pSMq7Ue1Va9Swm1U=

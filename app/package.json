@@ -17,11 +17,19 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "bespoke": "^1.1.0",
+    "bespoke-classes": "^1.0.0",
+    "bespoke-hash": "^1.1.0",
+    "bespoke-keys": "^1.1.0",
+    "bespoke-scale": "^1.0.1",
+    "bespoke-touch": "^1.0.0",
+    "daisyui": "^2.22.0",
     "dayjs": "^1.11.3",
-    "highlight.js": "^11.5.1",
+    "highlight.js": "^11.6.0",
     "katex": "^0.16.0",
     "reveal.js": "^4.3.1",
     "sass": "^1.53.0",
-    "svelte-navigator": "^3.1.6"
+    "svelte-navigator": "^3.1.6",
+    "theme-change": "^2.2.0"
   }
 }

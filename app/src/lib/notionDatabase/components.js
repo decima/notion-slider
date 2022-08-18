@@ -6,8 +6,15 @@ import MultiSelect from "./MultiSelect.svelte";
 import People from "./People.svelte";
 import Status from "./Status.svelte";
 import Date from "./Date.svelte";
+import RichText from "../notionPrimaries/RichText.svelte";
+import PhoneNumber from "./PhoneNumber.svelte";
+import Checkbox from "./Checkbox.svelte";
+import Email from "./Email.svelte";
+import Url from "./Url.svelte";
+import Files from "./Files.svelte";
 
 export const components = {
+    "phone_number": PhoneNumber,
     "title": Title,
     "number": Number,
     "select": Select,
@@ -15,6 +22,11 @@ export const components = {
     "people": People,
     "status": Status,
     "date": Date,
+    "rich_text":RichText,
+    "checkbox":Checkbox,
+    "email":Email,
+    "url":Url,
+    "files":Files,
 }
 
 export function loadDBComponent(name) {

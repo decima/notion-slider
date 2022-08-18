@@ -1,0 +1,17 @@
+.bespoke-slide {
+  display: none;
+}
+
+.bespoke-active {
+  @apply h-screen w-screen;
+  @apply flex bg-cover;
+
+  p,li{
+    @apply p-1 text-2xl;
+  }
+
+  table.row-header{
+
+  }
+
+}

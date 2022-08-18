@@ -6,6 +6,6 @@
 {#if icon.type == "file"}
     <img src="{icon.file.url}" class="h-10"/>
     {:else if icon.type == "emoji"}
-    <span class="">{icon.emoji} </span>
+    <span class="text-2xl">{icon.emoji} </span>
 {/if}
 </div>

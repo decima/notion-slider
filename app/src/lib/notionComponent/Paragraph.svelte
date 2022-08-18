@@ -4,10 +4,7 @@
 
     export let item = {}
 </script>
-<p class="text-left">
+<p class="text-left color-{item.block.paragraph.color??'none'}">
     <RichText richText={item.block.paragraph.rich_text}/>
-    <slot>
-
-
-    </slot>
+    <slot></slot>
 </p>

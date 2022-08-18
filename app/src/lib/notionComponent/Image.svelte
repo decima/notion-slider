@@ -7,28 +7,24 @@
         return JSON.stringify(obj)
     }
 </script>
-<div class="flex h-full py-24">
-    <div class="flex flex-col">
-        <div class="h-2/3">
-            {#if item.block.image.type == "file"}
-                <img src="{item.block.image.file.url}" class="object-scale-down mx-auto"/>
 
-            {:else if item.block.image.type == "external"}
-                <img src="{item.block.image.external.url}" class="object-scale-down mx-auto"/>
+<div class="card card-compact w-full bg-base-100 shadow-xl">
+    <figure>
+        {#if item.block.image.type == "file"}
+            <img src="{item.block.image.file.url}" class="object-scale-down mx-auto w-full"/>
 
-            {/if}
+        {:else if item.block.image.type == "external"}
+            <img src="{item.block.image.external.url}" class="object-scale-down mx-auto w-full"/>
+
+        {/if}
+    </figure>
+    {#if item.block.image.caption}
+        <div class="card-body">
+            <small>
+                <RichText richText={item.block.image.caption}/>
+            </small>
         </div>
-        <span class="text-xs h-1/3 px-10">
-            <RichText richText={item.block.image.caption}/>
-        </span>
-    </div>
+    {/if}
 </div>
 <slot></slot>
 
-<style>
-img{
-    height: 100%;
-    object-fit: scale-down;
-    @apply rounded-xl;
-}
-</style>

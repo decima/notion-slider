@@ -4,12 +4,13 @@
 
     export let item;
 </script>
-<div class="p-4 mx-4 border color-{item.block.callout.color} rounded-lg">
-    <div class="flex text-xl">
+<div class="alert color-{item.block.callout.color} my-2 w-full">
+    <div class="w-full">
+
         <Icon icon={item.block.callout.icon}></Icon>
-        <div>
+        <div class="w-full">
             <RichText richText={item.block.callout.rich_text}/>
+            <slot/>
         </div>
     </div>
-    <slot/>
 </div>

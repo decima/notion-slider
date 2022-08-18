@@ -145,7 +145,6 @@ func readBlock(client *notionapi.Client, id notionapi.BlockID) []TreeBlock {
 
 	for {
 		pageChildrenBlocks, _ := client.Block.GetChildren(context.Background(), id, &notionapi.Pagination{PageSize: 1000, StartCursor: startCursor})
-
 		for _, b := range pageChildrenBlocks.Results {
 			block := b.(notionapi.Block)
 			treeB := TreeBlock{Type: block.GetType().String(), Block: block, Children: []TreeBlock{}, HasChildren: block.GetHasChildren()}

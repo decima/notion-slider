@@ -1,19 +1,13 @@
 <script>
     import RichText from "../notionPrimaries/RichText.svelte";
-    import ToggleIcon from "./ToggleIcon.svelte";
+    import Toggleable from "./Toggleable.svelte";
 
     export let item;
     export let expanded = false;
 </script>
-<div class:toggler={item.has_children}>
-    <h3  class="text-2xl" on:click={()=>{expanded=!expanded}}>
-        {#if item.has_children}
-            <ToggleIcon bind:expanded/>
-
-        {/if}
+<Toggleable toggleable={item.has_children} color={item.block.heading_3.color??'none'}>
+    <h3 slot="title" class="text-4xl text-accent color-{item.block.heading_3.color??'none'} font-semibold">
         <RichText richText={item.block.heading_3.rich_text}/>
     </h3>
-    {#if expanded}
-        <slot></slot>
-    {/if}
-</div>
+    <slot></slot>
+</Toggleable>

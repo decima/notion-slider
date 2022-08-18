@@ -4,8 +4,8 @@
     import Renderer from "../notionComponent/Renderer.svelte";
     import Reveal from "reveal.js";
 
-    import '../../assets/fullReveal.scss'
-    import '../../assets/reveal.scss'
+    //import '../../assets/fullReveal.scss'
+    //import '../../assets/reveal.scss'
 
     import RichText from "../notionPrimaries/RichText.svelte";
     import Icon from "../notionComponent/Icon.svelte";
@@ -20,7 +20,8 @@
     export let data = null;
     export let page = null;
     onMount(async () => {
-        await loadPage()
+        window.location.href = "/presentation/"+id;
+
     })
 
     async function loadPage() {

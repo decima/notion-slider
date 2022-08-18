@@ -5,5 +5,5 @@
     export let persons
 </script>
 {#each persons as person}
-    <PeopleText bind:person/>
+    <PeopleText bind:person/><br/>
 {/each}
