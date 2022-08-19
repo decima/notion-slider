@@ -3,14 +3,14 @@ module notionSlider
 go 1.18
 
 require (
-//	github.com/decima/notionapi v1.8.10
+	github.com/decima/notionapi v1.8.10
 	github.com/gin-contrib/static v0.0.1
 	github.com/gin-gonic/gin v1.8.1
 	github.com/katera/og v0.0.0-20180329065201-c9a49442a031
 )
 
-replace github.com/decima/notionapi => ../notionapi/
-require github.com/decima/notionapi v0.0.0-00010101000000-000000000000
+//replace github.com/decima/notionapi => ../notionapi/
+//require github.com/decima/notionapi v0.0.0-00010101000000-000000000000
 
 
 require (
