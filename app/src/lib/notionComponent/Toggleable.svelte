@@ -1,21 +1,49 @@
 <script>
+    import {createEventDispatcher, onMount} from "svelte";
+    import ToggleableElement from "./ToggleableElement.svelte";
+
     export let toggleable = false;
     export let expanded = false;
-    export let color="none";
+    export let color = "none";
+    export let id=0;
+    let element = null
+    const dispatch = createEventDispatcher();
+
+    function toggle() {
+        if (expanded) {
+            close();
+        } else {
+            open();
+        }
+    }
+
+    function open() {
+        expanded = true
+        dispatch('open');
+    }
+
+    function close() {
+        expanded = false
+        dispatch('close');
+    }
+
+    onMount(() => {
+        if (toggleable){
+            dispatch("mountedToggle", {id:id,item: element})
+        }
+    })
+
+
 </script>
-<div
-        class:m-1={toggleable}
-        class:collapse={toggleable}
-        class:collapse-open={expanded && toggleable}
-        class:collapse-arrow={toggleable} class="color-{color}"
-        class:bg-base-100={toggleable}
-        class:rounded-box={toggleable}
->
-    <div class:collapse-title={toggleable} on:click={()=>{expanded=!expanded}}>
-        <slot name="title">
-        </slot>
+<ToggleableElement bind:toggleable bind:expanded bind:color
+                   on:open
+                   on:close
+                   bind:this={element}
+                   on:mountedToggle>
+
+    <div slot="title">
+        <slot name="title"></slot>
     </div>
-    {#if expanded}
-    <div class="collapse-content"><slot></slot></div>
-        {/if}
-</div>
+    <slot></slot>
+
+</ToggleableElement>

@@ -1,7 +1,6 @@
 <script>
     import {Route, Router} from "svelte-navigator";
     import ListSlides from "./lib/pages/ListSlides.svelte";
-    import Slides from "./lib/pages/Slides.svelte";
     import Auth from "./lib/pages/Auth.svelte";
     import Homepage from "./lib/pages/Homepage.svelte";
     import Logout from "./lib/pages/Logout.svelte";
@@ -25,7 +24,6 @@
         <Route path="login" component={Login} primary={false}/>
         <Route path="auth" component={Auth} primary={false}/>
         <Route path="slides" component="{ListSlides}" primary={false}/>
-        <Route path="slides/:id" component={Slides} primary={false}/>
         <Route path="presentation/:id" component={Presentation} primary={false}/>
         <Route path="database/:id" component={Database} primary={false}/>
     </Router>

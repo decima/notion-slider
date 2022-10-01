@@ -21,11 +21,21 @@ async function file(id) {
 }
 
 
-
 let pageId = null
 
+
 function slideInitializer() {
-    const {subscribe, set, update} = writable({loading: true, sections: [], page: {}});
+    const {subscribe, set, update} = writable({loading: true, sections: [], page: {}, perPageToggles: {}});
+
+    function processToggles(section, field) {
+        for (const item of section) {
+            if (['toggle', 'heading_1', 'heading_2', 'heading_3'].includes(item.type) && item.has_children) {
+                field.push(item.block.id);
+                processToggles(item.children, field)
+            }
+        }
+        return field;
+    }
 
     return {
         subscribe,
@@ -34,23 +44,31 @@ function slideInitializer() {
                 return navigate("/")
             }
 
-            set({loading: true, sections: [], page: {}})
+            set({loading: true, sections: [], page: {},perPageToggles:{}})
             const loaded = await file(pageId)
             let section = []
+            let perPageToggles = {};
             let data = [];
             let page = loaded.page
+            let currentPage = 0;
             for (let block of loaded.blocks) {
                 if (block.type === "divider") {
                     data.push(section)
+                    perPageToggles[currentPage] = processToggles(section, []);
+                    currentPage++
                     section = []
                 } else {
                     section.push(block)
                 }
             }
             data.push(section)
+            perPageToggles[currentPage] = processToggles(section, []);
+            currentPage++
+
             set({
                 page: page,
                 sections: data,
+                perPageToggles,
             })
         }
 
