@@ -64,7 +64,7 @@
             </div>
         </section>
     {#each $slide.sections as section}
-        <section class=" p-4 flex-col flex-grow">
+        <section class=" p-4 flex-col flex-grow container mx-auto">
 
             {#each section as item}
                 <div  class:flex-1={item.type=='child_database'}>

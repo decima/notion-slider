@@ -8,18 +8,18 @@
     }
 </script>
 
-<div class="card card-compact w-full bg-base-100 shadow-xl">
+<div class="card card-compact bg-base-100">
     <figure>
         {#if item.block.image.type == "file"}
-            <img src="{item.block.image.file.url}" class="object-scale-down mx-auto w-full"/>
+            <img src="{item.block.image.file.url}" class="object-scale-down mx-auto"/>
 
         {:else if item.block.image.type == "external"}
-            <img src="{item.block.image.external.url}" class="object-scale-down mx-auto w-full"/>
+            <img src="{item.block.image.external.url}" class="object-scale-down mx-auto"/>
 
         {/if}
     </figure>
     {#if item.block.image.caption}
-        <div class="card-body">
+        <div class="card-body text-center">
             <small>
                 <RichText richText={item.block.image.caption}/>
             </small>

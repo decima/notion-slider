@@ -7,7 +7,7 @@
   @apply flex bg-cover;
 
   p,li{
-    @apply p-1 text-2xl;
+    @apply text-xs sm:text-sm p-1 sm:p-2 md:text-base xl:text-lg 2xl:text-xl 2xl:p-4;
   }
 
   table.row-header{

@@ -1,10 +1,25 @@
 <script>
 
     import HtmlRichTextItem from "./HtmlRichTextItem.svelte";
-    import Default from "../notionComponent/Default.svelte";
-
+    import katex from "katex"
+    import "katex/dist/katex.min.css"
     export let richText;
     export let overrideStyle = false;
+
+    function renderEquation(input) {
+        try {
+            const res=  katex.renderToString(input, {
+                throwOnError: true,
+            });
+            return res
+
+
+        } catch (e) {
+            console.error(e);
+            return input;
+        }
+
+    }
 </script>
 <HtmlRichTextItem isWrapped={richText.href!=null} href={richText.href}>
 
@@ -37,7 +52,7 @@
     {:else if richText.type == "mention"}
         <span>{richText.plain_text}</span>
     {:else if richText.type == "equation"}
-        <span>{richText.plain_text}</span>
+        <span>{@html renderEquation(richText.plain_text)}</span>
     {:else}
         UNSUPPORTED
     {/if}

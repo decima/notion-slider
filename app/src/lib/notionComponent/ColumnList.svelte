@@ -3,14 +3,11 @@
 
     export let item;
 </script>
-<div class="flex gap-1">
+<div class="flex gap-4 flex-col lg:flex-row">
     {#each item.children as child,id }
-        <div class="flex-1">
-        <Renderer items={[child]}></Renderer>
+        <div class="flex-initial">
+            <Renderer items={[child]}></Renderer>
         </div>
-        {#if id < item.children.length-1}
-            <div class="divider divider-horizontal"></div>
-            {/if}
     {/each}
 </div>
 
