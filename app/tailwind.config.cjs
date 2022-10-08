@@ -82,6 +82,23 @@ module.exports = {
                     "warning": "#FFA92B",
                     "error": "#FF2E54",
                 },
+                "lpl-v2": {
+                    fontFamily: 'Poppins,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+                    "primary": "#3A3A3A",
+                    "primary-content": "#EAF8FC",
+                    "secondary": "#3A3A3A",
+                    "secondary-content": "#FEF8E6",
+                    "accent": "#3A3A3A",
+                    "accent-content": "#E8FFF6",
+                    "neutral": "#13110C",
+                    "base-100": "#FFFFFF",
+                    "info": "#96DBF0",
+                    "success": "#2DC94F",
+                    "warning": "#FFA92B",
+                    "error": "#FF2E54",
+                },
+
+                //#EAF8FC
             }],
     },
 }

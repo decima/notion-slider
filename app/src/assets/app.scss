@@ -6,6 +6,17 @@
 $darkThemes: "dark", synthwave,halloween,forest,"aqua","black",luxury,dracula,business,night,coffee;
 $lightCodeThemes: "pastel","wireframe";
 
+h1.color-default{
+  @apply text-primary bg-primary-content rounded-box my-0.5;
+}
+
+h2.color-default{
+  @apply text-secondary bg-secondary-content rounded-box my-0.5;
+}
+
+h3.color-default{
+  @apply text-accent bg-accent-content rounded-box p-6 my-0.5;
+}
 .color-gray {color: #9B9A97;}
 .color-gray_background {background-color: #EBECED;color: black;}
 
