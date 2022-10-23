@@ -24,6 +24,9 @@
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">
                     <li>
+                        <a href="/how-to">How to?</a>
+                    </li>
+                    <li>
                         <select data-choose-theme>
                             <option value="">Default</option>
                             {#each themes as theme}
@@ -32,6 +35,7 @@
                                 {/each}
                         </select>
                     </li>
+
                     {#if $session}
                         <li>
                             <a href="/slides">Slides</a>

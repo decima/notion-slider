@@ -17,6 +17,7 @@
     "vite": "^2.9.9"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.7",
     "bespoke": "^1.1.0",
     "bespoke-classes": "^1.0.0",
     "bespoke-hash": "^1.1.0",

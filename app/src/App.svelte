@@ -9,6 +9,7 @@
     import Login from "./lib/pages/Login.svelte";
     import Database from "./lib/pages/Database.svelte";
     import Presentation from "./lib/pages/Presentation.svelte";
+    import HowTo from "./lib/pages/HowTo.svelte";
 
 
 </script>
@@ -20,6 +21,7 @@
 
         <Route path="" component={Homepage} primary={false}/>
         <Route path="/tos" component={Terms} primary={false}/>
+        <Route path="/how-to" component={HowTo} primary={false}/>
         <Route path="logout" component={Logout} primary={false}/>
         <Route path="login" component={Login} primary={false}/>
         <Route path="auth" component={Auth} primary={false}/>
