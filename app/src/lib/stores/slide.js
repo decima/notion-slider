@@ -17,12 +17,13 @@ function fakeText() {
 function findAllTitles(items, registry) {
 
     for (const item of items) {
-        if (!["heading_1", "heading_2", "heading_3"].includes(item.type)) {
+        if (["heading_1", "heading_2", "heading_3"].includes(item.type)) {
+            const title = {type:item.type, content:item.block[item.type], children:[]}
+            registry.push(title)
+
             continue;
         }
-        const title = {type:item.type, content:item.block[item.type], children:[]}
-        //findAllTitles(item.children, title.children)
-        registry.push(title)
+        findAllTitles(item.children, registry)
     }
 }
 
