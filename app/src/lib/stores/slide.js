@@ -21,7 +21,7 @@ function findAllTitles(items, registry) {
             continue;
         }
         const title = {type:item.type, content:item.block[item.type], children:[]}
-        findAllTitles(item.children, title.children)
+        //findAllTitles(item.children, title.children)
         registry.push(title)
     }
 }
