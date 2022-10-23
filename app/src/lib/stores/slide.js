@@ -6,6 +6,10 @@ import {URL, withHeaders} from "./api.js"
 import {navigate} from "svelte-navigator";
 import {getNotionAuth} from "./session.js";
 
+
+const DEFAULT_SETTINGS = {showTitle: true, showIcon: true, backgroundShadow: true};
+
+
 function fakeText() {
     return data
 }
@@ -25,7 +29,13 @@ let pageId = null
 
 
 function slideInitializer() {
-    const {subscribe, set, update} = writable({loading: true, sections: [], page: {}, perPageToggles: {}});
+    const {subscribe, set, update} = writable({
+        loading: true,
+        sections: [],
+        page: {},
+        perPageToggles: {},
+        settings: {}
+    });
 
     function processToggles(section, field) {
         for (const item of section) {
@@ -37,6 +47,29 @@ function slideInitializer() {
         return field;
     }
 
+    function processSettings(page) {
+        let newSettings = {};
+
+        if (!page?.properties?.slideSettings?.multi_select) {
+            return DEFAULT_SETTINGS
+        }
+        for (const setting of page.properties.slideSettings.multi_select) {
+            switch (setting.name) {
+                case "hideTitle":
+                    newSettings.showTitle = false;
+                    break;
+                case "hideIcon":
+                    newSettings.showIcon = false;
+                    break;
+                case "noBackgroundShadow":
+                    newSettings.backgroundShadow = false;
+                    break;
+            }
+        }
+        return {...DEFAULT_SETTINGS, ...newSettings};
+
+    }
+
     return {
         subscribe,
         async loadPage(pageId) {
@@ -44,12 +77,14 @@ function slideInitializer() {
                 return navigate("/")
             }
 
-            set({loading: true, sections: [], page: {},perPageToggles:{}})
+            set({loading: true, sections: [], page: {}, perPageToggles: {}, settings:{}})
             const loaded = await file(pageId)
             let section = []
             let perPageToggles = {};
             let data = [];
             let page = loaded.page
+            let settings = processSettings(page)
+
             let currentPage = 0;
             for (let block of loaded.blocks) {
                 if (block.type === "divider") {
@@ -66,9 +101,10 @@ function slideInitializer() {
             currentPage++
 
             set({
-                page: page,
+                page,
                 sections: data,
                 perPageToggles,
+                settings
             })
         }
 
