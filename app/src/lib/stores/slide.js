@@ -14,6 +14,18 @@ function fakeText() {
     return data
 }
 
+function findAllTitles(items, registry) {
+
+    for (const item of items) {
+        if (!["heading_1", "heading_2", "heading_3"].includes(item.type)) {
+            continue;
+        }
+        const title = {type:item.type, content:item.block[item.type], children:[]}
+        findAllTitles(item.children, title.children)
+        registry.push(title)
+    }
+}
+
 
 async function file(id) {
     if (id === "demo") return fakeText();
@@ -80,13 +92,15 @@ function slideInitializer() {
                 return navigate("/")
             }
 
-            set({loading: true, sections: [], page: {}, perPageToggles: {}, settings:{}})
+            set({loading: true, sections: [], page: {}, perPageToggles: {}, settings: {}, toc: []})
             const loaded = await file(pageId)
+            let toc = []
             let section = []
             let perPageToggles = {};
             let data = [];
             let page = loaded.page
             let settings = processSettings(page)
+            findAllTitles(loaded.blocks, toc)
 
             let currentPage = 0;
             for (let block of loaded.blocks) {
@@ -107,7 +121,8 @@ function slideInitializer() {
                 page,
                 sections: data,
                 perPageToggles,
-                settings
+                settings,
+                toc,
             })
         }
 

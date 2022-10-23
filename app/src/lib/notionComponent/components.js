@@ -21,6 +21,7 @@ import Embed from "./Embed.svelte";
 import Video from "./Video.svelte";
 import LinkPreview from "./LinkPreview.svelte";
 import ChildDatabase from "./ChildDatabase.svelte";
+import TableOfContents from "./TableOfContents.svelte";
 
 export const components = {
     "toggle": Toggle,
@@ -45,6 +46,7 @@ export const components = {
     "video": Video,
     "link_preview": LinkPreview,
     "child_database": ChildDatabase,
+    "table_of_contents":TableOfContents,
 }
 
 export function loadComponent(name) {
