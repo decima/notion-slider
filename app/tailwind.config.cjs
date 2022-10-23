@@ -1,4 +1,4 @@
-const defaultColors =require('daisyui/src/colors/themes')
+const defaultColors = require('daisyui/src/colors/themes')
 
 
 const lightColors = {
@@ -7,7 +7,7 @@ const lightColors = {
     brown: "#64473A",
     brown_background: "#E9E5E3",
     orange: "#D9730D",
-    orange_background:"#FAEBDD",
+    orange_background: "#FAEBDD",
     yellow: "#FAEBDD",
     yellow_background: "#FBF3DB",
     green: "#0F7B6C",
@@ -66,7 +66,7 @@ module.exports = {
                     ...defaultColors["[data-theme=dark]"],
                     ...darkColors,
                 },
-            },            "cupcake",
+            }, "cupcake",
             "bumblebee",
             "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter",
             {
@@ -96,6 +96,10 @@ module.exports = {
                     "success": "#2DC94F",
                     "warning": "#FFA92B",
                     "error": "#FF2E54",
+                },
+                "terminal": {
+                    fontFamily: 'VT323,monospace',
+
                 },
 
                 //#EAF8FC

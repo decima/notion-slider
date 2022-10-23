@@ -11,7 +11,7 @@
         // 👆 false parameter is required for svelte
     })
 
-    let themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter","lpl","lpl-v2"];
+    let themes = ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter","lpl","lpl-v2","terminal"];
 </script>
 <svelte:window bind:scrollY={y}/>
 {#if !$location.pathname.startsWith("/slides/") && !$location.pathname.startsWith("/database/") && !$location.pathname.startsWith("/presentation/") }<!--
