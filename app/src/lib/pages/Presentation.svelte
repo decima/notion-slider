@@ -133,34 +133,38 @@
 </script>
 <div bind:this={presentation}>
     {#if !$slide.loading}
-        <section>
-            <div class="bg-center bg-cover hero h-screen w-screen"
-                 style="background-image:url({ resolveImage($slide.page?.cover) })">
-                {#if $slide.settings.backgroundShadow}
-                    <div class="hero-overlay bg-opacity-50 "></div>
-                {/if}
-                <div class="hero-content text-center text-neutral-content">
-                    <div class="max-w-md">
+        {#if $slide.settings.showFirst}
+            <section>
+                <div class="bg-center bg-cover hero h-screen w-screen"
+                     style="background-image:url({ resolveImage($slide.page?.cover) })">
+                    {#if $slide.settings.backgroundShadow}
+                        <div class="hero-overlay bg-opacity-50 "></div>
+                    {/if}
+                    <div class=" text-center text-neutral-content w-full">
+                        <div class="">
 
-                        {#if $slide.page.icon && $slide.settings.showIcon}
-                            <div class="text-7xl">
-                                <Icon icon={$slide.page.icon}/>
-                            </div>
-                        {/if}
-                        {#if $slide.settings.showTitle}
-                            <h1 class="mb-5 text-7xl font-bold">
-                                {#if $slide?.page?.properties?.Name}
-                                    <RichText richText={$slide?.page?.properties?.Name?.title} overrideStyle={true}/>
-                                {:else if $slide?.page?.properties?.title}
-                                    <RichText richText={$slide?.page?.properties?.title?.title} overrideStyle={true}/>
-                                {/if}
-                            </h1>
-                        {/if}
+                            {#if $slide.page.icon && $slide.settings.showIcon}
+                                <div class="text-7xl">
+                                    <Icon icon={$slide.page.icon}/>
+                                </div>
+                            {/if}
+                            {#if $slide.settings.showTitle}
+                                <h1 class="text-7xl font-bold w-full">
+                                    {#if $slide?.page?.properties?.Name}
+                                        <RichText richText={$slide?.page?.properties?.Name?.title}
+                                                  overrideStyle={true}/>
+                                    {:else if $slide?.page?.properties?.title}
+                                        <RichText richText={$slide?.page?.properties?.title?.title}
+                                                  overrideStyle={true}/>
+                                    {/if}
+                                </h1>
+                            {/if}
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
-        </section>
+            </section>
+        {/if  }
         {#each $slide.sections as section,slide}
             <section class=" p-4 flex-col flex-grow container mx-auto">
                 {#each section as item}
