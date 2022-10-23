@@ -7,7 +7,7 @@ import {navigate} from "svelte-navigator";
 import {getNotionAuth} from "./session.js";
 
 
-const DEFAULT_SETTINGS = {showTitle: true, showIcon: true, backgroundShadow: true};
+const DEFAULT_SETTINGS = {showTitle: true, showIcon: true, backgroundShadow: true, showFirst: true};
 
 
 function fakeText() {
@@ -63,6 +63,9 @@ function slideInitializer() {
                     break;
                 case "noBackgroundShadow":
                     newSettings.backgroundShadow = false;
+                    break;
+                case "hideFirst":
+                    newSettings.showFirst = false;
                     break;
             }
         }

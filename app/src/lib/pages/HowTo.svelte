@@ -70,6 +70,7 @@
                 <tr><th><code>hideTitle</code></th><td>Hide the Title of the first slide</td></tr>
                 <tr><th><code>hideIcon</code></th><td>Hide the Icon of the first slide</td></tr>
                 <tr><th><code>noBackgroundShadow</code></th><td>Disable background shadow of the first slide</td></tr>
+                <tr><th><code>hideFirst <div class="badge">0.5.1</div></code></th><td>Hide title slide</td></tr>
             </table>
 
             more to come on next releases with transitions to use, subtitle, custom css and much more, feel free to contact me if you have more stuff you want.
