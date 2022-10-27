@@ -14,7 +14,7 @@
 
 </script>
 
-<main class="h-screen w-screen">
+<main class="bg-base-200">
     <Router>
         <Navbar></Navbar>
 

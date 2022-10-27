@@ -195,8 +195,10 @@ func searchInDatabase(client *notionapi.Client, id notionapi.DatabaseID) []notio
 }
 
 type Document struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Name  string           `json:"name"`
+	URL   string           `json:"url"`
+	Cover *notionapi.Image `json:"cover"`
+	Page  *notionapi.Page  `json:"page"`
 }
 
 func listFiles(client *notionapi.Client) map[string]Document {
@@ -219,7 +221,6 @@ func listFiles(client *notionapi.Client) map[string]Document {
 		for _, i := range res.Results {
 			page := i.(*notionapi.Page)
 			pageTitle := "~"
-
 			var prop notionapi.Property
 
 			if nameProperty, ok := page.Properties["Name"]; ok {
@@ -237,8 +238,10 @@ func listFiles(client *notionapi.Client) map[string]Document {
 			}
 
 			pages[string(page.ID)] = Document{
-				Name: pageTitle,
-				URL:  page.URL,
+				Name:  pageTitle,
+				URL:   page.URL,
+				Cover: page.Cover,
+				Page:  page,
 			}
 
 		}
