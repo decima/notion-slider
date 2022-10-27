@@ -9,9 +9,10 @@ RUN mkdir /app
 COPY go.mod /app
 COPY go.sum /app
 WORKDIR /app
+ARG VERSION=dev
 RUN go mod download
 COPY . /app
-RUN CGO_ENABLED=0 go build -o NotionSlider .
+RUN CGO_ENABLED=0 go build -o NotionSlider -ldflags "-X main.version=$VERSION" .
 
 
 FROM alpine as runner

@@ -3,6 +3,7 @@
     import {session} from "./stores/session.js";
     import {onMount} from "svelte";
     import {themeChange} from "theme-change";
+    import {globalSettings} from "./stores/globalSettings.js";
 
     const location = useLocation();
     let y = 0;
@@ -19,7 +20,10 @@
 
         <div class="navbar bg-base-100">
             <div class="flex-1">
-                <a href="/" class="btn btn-ghost normal-case text-xl">Notion Slider</a>
+                <a href="/" class="btn btn-ghost normal-case text-xl">Notion Slider&nbsp;
+                <div class="badge badge-primary">{$globalSettings.version}</div>
+                </a>
+
             </div>
             <div class="flex-none">
                 <ul class="menu menu-horizontal p-0">
