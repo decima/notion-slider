@@ -7,23 +7,23 @@ import {navigate} from "svelte-navigator";
 import {getNotionAuth} from "./session.js";
 
 
-const DEFAULT_SETTINGS = {showTitle: true, showIcon: true, backgroundShadow: true, showFirst: true};
+const DEFAULT_SETTINGS = {showTitle: true, showIcon: true, backgroundShadow: true, showFirst: true, TOCLevel: 3};
 
 
 function fakeText() {
     return data
 }
 
-function findAllTitles(items, registry) {
+function findAllTitles(items, registry,settings) {
 
     for (const item of items) {
-        if (["heading_1", "heading_2", "heading_3"].includes(item.type)) {
-            const title = {type:item.type, content:item.block[item.type], children:[]}
+        if (["heading_1", "heading_2", "heading_3"].slice(0,settings.TOCLevel).includes(item.type)) {
+            const title = {type: item.type, content: item.block[item.type], children: []}
             registry.push(title)
 
             continue;
         }
-        findAllTitles(item.children, registry)
+        findAllTitles(item.children, registry,settings)
     }
 }
 
@@ -80,6 +80,11 @@ function slideInitializer() {
                 case "hideFirst":
                     newSettings.showFirst = false;
                     break;
+                case "2levelTOC":
+                    newSettings.TOCLevel = 2;
+                    break;
+                case "1levelTOC":
+                    newSettings.TOCLevel = 1;
             }
         }
         return {...DEFAULT_SETTINGS, ...newSettings};
@@ -101,7 +106,7 @@ function slideInitializer() {
             let data = [];
             let page = loaded.page
             let settings = processSettings(page)
-            findAllTitles(loaded.blocks, toc)
+            findAllTitles(loaded.blocks, toc, settings)
 
             let currentPage = 0;
             for (let block of loaded.blocks) {

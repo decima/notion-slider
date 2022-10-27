@@ -23,6 +23,10 @@ export function getTokenOrRedirect() {
     return token
 }
 
+export async function getInfo() {
+
+    return await (await fetch(URL, withHeaders({}))).json()
+}
 export async function listFiles() {
 
     return await (await fetch(URL + "/slides", withHeaders({}))).json()

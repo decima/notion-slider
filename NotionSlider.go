@@ -27,6 +27,8 @@ var oauthClientSecret string
 var hostAndPort string
 var domain string
 
+var version = "dev"
+
 func init() {
 	flag.StringVar(&oauthClientId, "client_id", "NO_CLIENT_ID_PROVIDED", "Client Id to use")
 	flag.StringVar(&oauthClientSecret, "client_secret", "NO_CLIENT_SECRET_PROVIDED", "Client Secret to use")
@@ -48,6 +50,7 @@ func main() {
 	r.GET("/api", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"url":       domain,
+			"version":   version,
 			"client_id": oauthClientId,
 		})
 	})

@@ -1,10 +1,9 @@
 import {readable} from "svelte/store";
+import {getInfo} from "./api.js";
 
 
-export const globalSettings = readable({url: "/", client_id: ""},
+export const globalSettings = readable({url: "/", client_id: "", version: "dev"},
     async function start(set) {
-        const response = await fetch("/api")
-        const e = await response.json();
-        set(e)
+        set(await getInfo())
     });
 
