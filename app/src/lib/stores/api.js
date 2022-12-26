@@ -37,6 +37,9 @@ export async function getDatabase(id) {
 }
 
 export function resolveImage(obj) {
+    if (!obj){
+        return "no-preview";
+    }
     const item = obj?.external || obj?.file
 
     return item?.url
