@@ -2,10 +2,6 @@
     import RichText from "../notionPrimaries/RichText.svelte";
 
     export let item
-
-    function toJSON(obj) {
-        return JSON.stringify(obj)
-    }
 </script>
 
 <div class="card card-compact bg-base-100">

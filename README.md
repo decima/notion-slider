@@ -50,11 +50,11 @@ version: "3"
 services:
   notionslider:
     # comment build key and uncomment image to not have to build your own image.
-    # image: "decima/notion-slider:0.7.0"
+    # image: "decima/notion-slider:0.8.0"
     build: 
       context: . 
       args:
-        VERSION: 0.7.0
+        VERSION: 0.8.0
     entrypoint:
       - ./NotionSlider
       - -client_id=CLIENT_ID

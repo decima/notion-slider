@@ -18,7 +18,7 @@
 {#if !$location.pathname.startsWith("/slides/") && !$location.pathname.startsWith("/database/") && !$location.pathname.startsWith("/presentation/") }<!--
     --{#if !$location.pathname.startsWith("/slides/") && !$location.pathname.startsWith("/database/") } -->
 
-        <div class="navbar bg-base-100">
+        <div class="navbar bg-base-100 flex-col md:flex-row">
             <div class="flex-1">
                 <a href="/" class="btn btn-ghost normal-case text-xl">Notion Slider&nbsp;
                 <div class="badge badge-primary">{$globalSettings.version}</div>
