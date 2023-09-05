@@ -50,7 +50,15 @@ module.exports = {
 
     ],
     theme: {
-        extend: {},
+        extend: {
+            maxHeight: {
+                '1/2': '50%',
+            },
+            maxWidth: {
+                '1/2': '50%',
+            },
+
+        }
     },
     plugins: [require("daisyui"), require('@tailwindcss/typography')],
     daisyui: {
@@ -97,6 +105,24 @@ module.exports = {
                     "warning": "#FFA92B",
                     "error": "#FF2E54",
                 },
+                "lpl-v3": {
+                    "primary": "#e50054",
+                    "primary-content": "#F5F6F8",
+                    "secondary": "#ffe5ef",
+                    "secondary-content": "#181B1E",
+                    "accent": "#e50054",
+                    "accent-content": "#181B1E",
+                    "neutral": "#F5F6F8",
+                    "neutral-content": "#181B1E",
+                    "base-100": "#F5F6F8",
+                    "base-200": "#EBEDF0",
+                    "base-300": "#CED3DB",
+                    "base-content": "#181B1E",
+                    "info": "#96DBF0",
+                    "success": "#2DC94F",
+                    "warning": "#FFA92B",
+                    "error": "#FF2E54",
+                }
 
                 //#EAF8FC
             }],

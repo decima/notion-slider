@@ -54,7 +54,7 @@ services:
     build: 
       context: . 
       args:
-        VERSION: 0.8.0
+        VERSION: 0.9.0
     entrypoint:
       - ./NotionSlider
       - -client_id=CLIENT_ID

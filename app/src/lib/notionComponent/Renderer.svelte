@@ -2,11 +2,11 @@
     import {loadComponent} from "./components.js";
     import Renderer from "./Renderer.svelte";
     import {createEventDispatcher} from "svelte";
+    import Default from "../notionDatabase/Default.svelte";
     export let items = []
     const dispatch=createEventDispatcher();
 
 </script>
-
 {#each items as item }
     {#if item && item.type }
             <svelte:component this="{loadComponent(item.type)}" bind:item on:open on:close on:mountedToggle>

@@ -115,6 +115,7 @@
             ]);
 
         } catch (e) {
+            console.error(e);
             loadingError = true;
         }
 

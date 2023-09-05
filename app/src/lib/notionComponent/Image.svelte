@@ -4,7 +4,7 @@
     export let item
 </script>
 
-<div class="card card-compact bg-base-100">
+<div class="card card-compact bg-base-100 max-h-full">
     <figure>
         {#if item.block.image.type == "file"}
             <img src="{item.block.image.file.url}" class="object-scale-down mx-auto"/>

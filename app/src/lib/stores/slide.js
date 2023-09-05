@@ -15,13 +15,15 @@ function fakeText() {
 }
 
 function findAllTitles(items, registry,settings) {
-
     for (const item of items) {
         if (["heading_1", "heading_2", "heading_3"].slice(0,settings.TOCLevel).includes(item.type)) {
             const title = {type: item.type, content: item.block[item.type], children: []}
             registry.push(title)
 
             continue;
+        }
+        if(item.children===null){
+            console.log(item)
         }
         findAllTitles(item.children, registry,settings)
     }
