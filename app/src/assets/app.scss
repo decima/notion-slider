@@ -6,8 +6,8 @@
 }
 
 
-$darkThemes: "dark", synthwave, halloween, forest, "aqua", "black", luxury, dracula, business, night, coffee;
-$lightCodeThemes: "pastel", "wireframe";
+$darkThemes: "dark", synthwave, halloween, forest, "aqua", "black", luxury, dracula, business, night, coffee,lpl-v3-dark;
+$lightCodeThemes: "pastel", "wireframe",lpl-v3, lpl-v2, lpl;
 
 h1.color-default {
   @apply text-primary bg-primary-content rounded-box my-0.5;
